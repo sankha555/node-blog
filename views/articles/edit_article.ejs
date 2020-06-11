@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/static/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background-color: gray;
+            color: white;
+            width: 100%;
+        }
+
+        .article-form {
+            border: 1px solid;
+            border-color: gray;
+            border-radius: 4px;
+            padding-left: 15px;
+            padding-top: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+
+            font-size: large;
+        }
+
+        .form-control {
+            border-radius: 4px;
+        }
+
+        .btn {
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: medium;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Blogo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/articles">Articles <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/articles/new">Create</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Users
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Login</a>
+                        <a class="dropdown-item" href="#">Register</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <!--Main Content Of The Page-->
+    <main class="container">
+        <br>
+        <h3 class="mb-4"><strong><u>Article Form</u></strong></h3>
+
+        <form action="articles/<%= article.id %>?_method=PUT" method="POST">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= article.title %>" required>
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <textarea rows="5" columns="85" id="content" name="content" class="form-control" requried><%= article.content %></textarea>
+            </div> 
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-success mr-2">Update</button>
+                <a class="btn btn-outline-danger" href="/articles">Cancel</a>
+            </div>
+        </form>
+        
+    </main>
+
+    <!--Main Ends-->
+
+    <!--Footer-->
+    <footer id="footer" class="footer">
+        <div class="container d-md-flex py-4">
+    
+            <div class="mr-md-auto text-center text-md-left">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Sankha Das</span></strong>. Made using Node.js
+                </div>
+            </div>
+            <div class="ml-4">
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
